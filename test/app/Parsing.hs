@@ -1,11 +1,10 @@
--- Functional parsing library from chapter 13 of Programming in Haskell,
--- Graham Hutton, Cambridge University Press, 2016.
-module Parsing (module Parsing, module Control.Applicative) where
+module Parsing where
 
 import Control.Applicative
 import Data.Char
 
 -- Basic definitions
+
 newtype Parser a = P (String -> [(a,String)])
 
 parse :: Parser a -> String -> [(a,String)]
@@ -15,6 +14,8 @@ item :: Parser Char
 item = P (\inp -> case inp of
                      []     -> []
                      (x:xs) -> [(x,xs)])
+
+-- Sequencing parsers
 
 instance Functor Parser where
    -- fmap :: (a -> b) -> Parser a -> Parser b
@@ -116,3 +117,9 @@ integer = token int
 
 symbol :: String -> Parser String
 symbol xs = token (string xs)
+
+
+--module MyLib (someFunc) where
+
+--someFunc :: IO ()
+--someFunc = putStrLn "someFunctionnn"

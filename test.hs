@@ -43,7 +43,7 @@ fac n = n * fac (n-1)
 product :: Num a => [a] -> a
 product [] = []
 product (n:ns) = n * product ns
-
+ghci
 --higher order function
 map :: (a -> b) -> [a] -> [b]
 map f xs =[f x | x <- xs]
